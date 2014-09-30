@@ -14,7 +14,7 @@ Example:
 __author__ = 'Elisabeth Spalding'
 __email__ = "elisabeth.spalding@mail.utoronto.ca"
 
-__copyright__ = "2014 Susan Sim"
+__copyright__ = "2014 Elisabeth Spalding"
 __license__ = "MIT License"
 
 __status__ = "Prototype"
