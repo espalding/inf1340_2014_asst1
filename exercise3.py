@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-    Decide winner of Rock Paper Scissor Game
+    Decide the winner of a Rock-Paper-Scissors Game.
 
     Assignment 1, Exercise 3, INF1340 Fall 2014
 """
@@ -14,12 +14,11 @@ __license__ = "MIT License"
 
 __status__ = "Prototype"
 
-
 # imports one per line
 
 def decide_rps(player1,player2):
     """
-        Returns the result of Rock-Paper-Scissors played between two players.
+        Returns the result of Rock-Paper-Scissors game played between two players.
 
         :param:
         player1: input entered by player1
@@ -35,31 +34,34 @@ def decide_rps(player1,player2):
             ValueError: if the input from either player is not valid.
         """
 
-    #Rock-Paper-Scissor List to check if the input is correct.
+    #Rock-Paper-Scissor list to check if the input is valid.
     rps_list = ['SCISSORS', 'PAPER', 'ROCK']
 
-    #Rock-Paper-Scissor dictionary to decide the winner.
+    #Rock-Paper-Scissor dictionary to determine the winner.
     rps_dict = {('SCISSORS','PAPER'): 1,
                 ('PAPER', 'SCISSORS'): 2,
-                ('PAPER','ROCK') : 1,
-                ('ROCK','PAPER'):2 ,
-                ('ROCK', 'SCISSORS'):1,
-                ('SCISSORS','ROCK'):2 }
+                ('PAPER','ROCK'): 1,
+                ('ROCK','PAPER'): 2 ,
+                ('ROCK', 'SCISSORS'): 1,
+                ('SCISSORS','ROCK'): 2}
 
-    # Change the input values from the players to upper case
-    # so that smaller case inputs can also be considered as valid.
-    player1=player1.upper()
-    player2=player2.upper()
+    if (type(player1) is str and type(player2) is str):
+        #change the input values from the players to upper case
+        #so that lower case inputs are also valid.
+        player1=player1.upper()
+        player2=player2.upper()
 
-    #check if the Players has input the valid values using rps_list.
-    if(player1 in rps_list and player2 in rps_list):
-        #if inputs are same for both players then the game is tie.
-        if(player1==player2):
-            return 0
-        #else create a tuple of input of players
-        #to use it as key in rps_dict.
+        #check if the players has input the valid values using rps_list.
+        if(player1 in rps_list and player2 in rps_list):
+            #if inputs are same for both players then the game is tie.
+            if(player1==player2):
+                return 0
+            #else create a tuple of input of players
+            #to use it as key in rps_dict.
+            else:
+                tup=(player1,player2)
+                return rps_dict.get(tup)
         else:
-            tup=(player1,player2)
-            return rps_dict.get(tup)
+            raise ValueError("The input values are incorrect.")
     else:
-        raise ValueError("The input values are incorrect")
+        raise TypeError("The input type is not string.")

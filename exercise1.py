@@ -53,10 +53,10 @@ def grade_to_gpa(grade):
 
     #check if grade is a integer and is in the range 0 to 100.
     elif type(grade) is int:
-        if grade in range(0,100):
+        if grade in range(0,101,1):
             # Sort the keys of dictionary numeric_to_gpa in descending order.
             # compare the input numeric grade with the sorted keys one by one.
-            # if the input numeric grade is greater than or equal to current key then return the relvant gpa.
+            # if the input numeric grade is greater than or equal to current key then return the relevant gpa.
             for i in sorted(numeric_to_gpa.keys(),reverse=True):
                 if(grade>=i):
                     return numeric_to_gpa.get(i)
