@@ -1,6 +1,65 @@
 #!/usr/bin/env python3
 
+"""
+    Decide winner of Rock Paper Scissor Game
 
-def decide_rps(player1, player2):
-    return 1
+    Assignment 1, Exercise 3, INF1340 Fall 2014
+"""
 
+__author__ = 'Elisabeth Spalding'
+__email__ = "elisabeth.spalding@mail.utoronto.ca"
+
+__copyright__ = "2014 Elisabeth Spalding"
+__license__ = "MIT License"
+
+__status__ = "Prototype"
+
+
+# imports one per line
+
+def decide_rps(player1,player2):
+    """
+        Returns the result of Rock-Paper-Scissors played between two players.
+
+        :param:
+        player1: input entered by player1
+        player2: input entered by player2
+
+        :return:
+            Integer:
+                0, Game is a Tie.
+                1, Player1 wins the game.
+                2, Player2 wins the game.
+
+        :raises:
+            ValueError: if the input from either player is not valid.
+        """
+
+    #Rock-Paper-Scissor List to check if the input is correct.
+    rps_list = ['SCISSORS', 'PAPER', 'ROCK']
+
+    #Rock-Paper-Scissor dictionary to decide the winner.
+    rps_dict = {('SCISSORS','PAPER'): 1,
+                ('PAPER', 'SCISSORS'): 2,
+                ('PAPER','ROCK') : 1,
+                ('ROCK','PAPER'):2 ,
+                ('ROCK', 'SCISSORS'):1,
+                ('SCISSORS','ROCK'):2 }
+
+    # Change the input values from the players to upper case
+    # so that smaller case inputs can also be considered as valid.
+    player1=player1.upper()
+    player2=player2.upper()
+
+    #check if the Players has input the valid values using rps_list.
+    if(player1 in rps_list and player2 in rps_list):
+        #if inputs are same for both players then the game is tie.
+        if(player1==player2):
+            return 0
+        #else create a tuple of input of players
+        #to use it as key in rps_dict.
+        else:
+            tup=(player1,player2)
+            return rps_dict.get(tup)
+    else:
+        raise ValueError("The input values are incorrect")
