@@ -21,7 +21,7 @@ def add_list_contents(l):
     """
     temp_sum = 0
     for ele in l:
-        temp_sum = temp_sum + int(ele)
+        temp_sum += int(ele)
     return temp_sum
 
 
@@ -72,7 +72,7 @@ def checksum(upc):
         # store the sum in cksum temporary variable.
         # multiply the resulted cksum with 3.
         cksum = cksum + add_list_contents(odd_list)
-        cksum = cksum*3
+        cksum *= 3
 
         # ********Step2************
         # sum all the elements of even list.
@@ -81,17 +81,17 @@ def checksum(upc):
 
         # *********Step3************
         # take Modulo 10 of resulted cksum.
-        cksum = cksum % 10
+        cksum %= 10
 
         # *********Step4************
         # if cksum is not equal to zero then subtract it from 10.
-        if(cksum != 0):
+        if cksum != 0:
             cksum = 10-cksum
 
         # check the calculated cksum against the the twelfth
         # digit of given string.
         # return True if they are equal, False otherwise.
-        if(int(upc[11]) == cksum):
+        if int(upc[11]) == cksum:
             return True
         else:
             return False

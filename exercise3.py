@@ -45,16 +45,16 @@ def decide_rps(player1, player2):
                 ('ROCK', 'SCISSORS'): 1,
                 ('SCISSORS', 'ROCK'): 2}
 
-    if (type(player1) is str and type(player2) is str):
+    if type(player1) is str and type(player2) is str:
         # change the input values from the players to upper case
         # so that lower case inputs are also valid.
         player1 = player1.upper()
         player2 = player2.upper()
 
         # check if the players has input the valid values using rps_list.
-        if(player1 in rps_list and player2 in rps_list):
+        if player1 in rps_list and player2 in rps_list:
             # if inputs are same for both players then the game is tie.
-            if(player1 == player2):
+            if player1 == player2:
                 return 0
             # else create a tuple of input of players
             # to use it as key in rps_dict.
