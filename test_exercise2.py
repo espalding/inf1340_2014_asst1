@@ -35,6 +35,7 @@ def test_input():
         checksum(1.0)
         checksum(786936224306)
 
+
 def text_str_len():
     """
     Inputs that are the incorrect length.

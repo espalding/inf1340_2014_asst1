@@ -14,18 +14,16 @@ __license__ = "MIT License"
 
 __status__ = "Prototype"
 
-# imports one per line
-
-# add contents of list of strings
 
 def add_list_contents(l):
     """
-    Add the contents of a string list.
+    Adds the contents of a string list.
     """
     temp_sum = 0
     for ele in l:
         temp_sum = temp_sum + int(ele)
     return temp_sum
+
 
 def checksum(upc):
     """
@@ -37,54 +35,61 @@ def checksum(upc):
         False, otherwise
     :raises:
         TypeError if input is not a strong
-        ValueError if string is the wrong length (with error string stating how many digits are over or under
+        ValueError if string is the wrong length (with error string stating
+        how many digits are over or under
     """
 
     # check type of input
     # raise TypeError if not string
     if type(upc) is not str:
-        raise TypeError ("Input is not a String")
+        raise TypeError("Input is not a String")
 
     # check length of string
     # raise ValueError if not 12
     elif len(upc) is not 12:
         if len(upc) > 12:
-            raise ValueError ("Length of Input is over by %d digits." % (len(upc)-12))
+            raise ValueError
+            ("Length of Input is over by %d digits." % (len(upc)-12))
         if len(upc) < 12:
-            raise ValueError ("Length of Input is under by %d digits." % (12-len(upc)))
+            raise ValueError
+            ("Length of Input is under by %d digits." % (12-len(upc)))
 
     # generate checksum using the first 11 digits provided
     else:
-        # odd_list contains all the odd digits from digit 0 to 11 of the given string.
-        odd_list=list(upc[0:11:2])
-        # even_list contains all the even digits from digit 1 to 11 of the given string.
-        even_list=list(upc[1:11:2])
+        # odd_list contains all the odd digits from digit 0 to 11
+        # of the given string.
+        odd_list = list(upc[0:11:2])
+        # even_list contains all the even digits from digit 1 to 11
+        # of the given string.
+        even_list = list(upc[1:11:2])
 
-        # temporary variable to store the calculated checksum using first 11 digits of given string.
-        cksum=0
+        # temporary variable to store the calculated checksum using first
+        # 11 digits of given string.
+        cksum = 0
 
-        #*********Step1************
+        # *********Step1************
         # sum all the elements of odd list.
         # store the sum in cksum temporary variable.
         # multiply the resulted cksum with 3.
         cksum = cksum + add_list_contents(odd_list)
-        cksum=cksum*3
+        cksum = cksum*3
 
-        #********Step2************
+        # ********Step2************
         # sum all the elements of even list.
         # add the sum with the previous result (cksum).
-        cksum=cksum + add_list_contents(even_list)
+        cksum = cksum + add_list_contents(even_list)
 
-        #*********Step3************
+        # *********Step3************
         # take Modulo 10 of resulted cksum.
-        cksum=cksum%10
+        cksum = cksum % 10
 
-        #*********Step4************
+        # *********Step4************
         # if cksum is not equal to zero then subtract it from 10.
         if(cksum != 0):
-            cksum=10-cksum
+            cksum = 10-cksum
 
-        # check the calculated cksum against the the twelfth digit of given string.
+        # check the calculated cksum against the the twelfth
+        # digit of given string.
         # return True if they are equal, False otherwise.
         if(int(upc[11]) == cksum):
             return True
