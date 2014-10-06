@@ -57,8 +57,13 @@ def grade_to_gpa(grade):
             # compare the input numeric grade with the sorted keys one by one.
             # if the input numeric grade is greater than or equal to current
             # key then return the relevant gpa.
+            # For Example:
+            # if the letter grade is 84, it checks with the 1st key which is 90
+            # 84 is less than 90 so it goes to next largest key and checks again
+            # 84 is less than 85 so it goes to next largest key and checks again
+            # 84 is greater than 80 so it returns with value at key 80.
             for i in sorted(numeric_to_gpa.keys(), reverse=True):
-                if(grade >= i):
+                if grade >= i:
                     return numeric_to_gpa.get(i)
         else:
                 raise ValueError("Value is out of range")

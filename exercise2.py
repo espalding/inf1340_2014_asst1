@@ -88,8 +88,7 @@ def checksum(upc):
         if cksum != 0:
             cksum = 10-cksum
 
-        # check the calculated cksum against the the twelfth
-        # digit of given string.
+        # check the calculated cksum against the the twelfth digit of given string.
         # return True if they are equal, False otherwise.
         if int(upc[11]) == cksum:
             return True

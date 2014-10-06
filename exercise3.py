@@ -32,7 +32,7 @@ def decide_rps(player1, player2):
 
         :raises:
             ValueError: if the input from either player is not valid.
-        """
+    """
 
     # Rock-Paper-Scissor list to check if the input is valid.
     rps_list = ['SCISSORS', 'PAPER', 'ROCK']

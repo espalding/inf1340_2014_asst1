@@ -26,10 +26,15 @@ def test_decide_rps():
 
 
 def test_value_decide_rps():
+
     with pytest.raises(ValueError):
         decide_rps("RCK", "Paper")
+    with pytest.raises(ValueError):
+        decide_rps("Rock", "Pper")
 
 
 def test_type_decide_rps():
     with pytest.raises(TypeError):
-        decide_rps(14, 25.4)
+        decide_rps(14, 15)
+    with pytest.raises(TypeError):
+        decide_rps(13.2, 25.4)

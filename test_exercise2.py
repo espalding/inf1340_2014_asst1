@@ -33,6 +33,7 @@ def test_input():
     """
     with pytest.raises(TypeError):
         checksum(1.0)
+    with pytest.raises(TypeError):
         checksum(786936224306)
 
 
@@ -42,6 +43,9 @@ def text_str_len():
     """
     with pytest.raises(ValueError):
         checksum("1")
+    with pytest.raises(ValueError):
         checksum("1234567890")
+    with pytest.raises(ValueError):
         checksum("123456789")
+    with pytest.raises(ValueError):
         checksum("12345678912345")
